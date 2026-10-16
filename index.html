@@ -205,6 +205,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .tile b{font-family:var(--serif);font-weight:400;font-size:clamp(22px,1.8vw,30px);line-height:1.2}
 .tile p{font-size:15px;color:var(--muted-ink);transition:color .6s}
 .tiles.five{grid-template-columns:repeat(5,1fr)}
+.awtiles .tile{min-height:260px;gap:28px}
+.awtiles .logo-cell{height:80px;display:flex;align-items:center}
+.awtiles .logo-cell img{max-height:72px;max-width:180px;width:auto;filter:grayscale(1);opacity:.7;mix-blend-mode:multiply;transition:filter .5s ease-in-out,opacity .5s}
+.awtiles .tile b{font-size:clamp(20px,1.5vw,24px)}
+.awtiles .tile:hover{background:var(--paper);color:var(--ink)}
+.awtiles .tile:hover p{color:var(--muted-ink)}
+.awtiles .tile:hover img{filter:none;opacity:1}
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(7,1fr);gap:0;border-top:1px solid #313131;margin:64px 0 96px}
 .step{padding:28px 18px 0 0;border-right:1px solid #313131;min-height:170px;display:flex;flex-direction:column;justify-content:space-between}
@@ -652,19 +659,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       <span class="eyebrow rv">Awards</span>
       <h2 class="h2 rv d1x"><span lang="en">Recognised with 11 international design awards.</span><span lang="th">ได้รับรางวัลดีไซน์ระดับโลก 11 รางวัล</span></h2>
     </div>
-    <div class="tiles five rv d1x">
-      <div class="tile"><b>Red Dot</b><p>C2 Water</p></div>
-      <div class="tile"><b>iF Design Award</b><p>C2 Water</p></div>
-      <div class="tile"><b>Pentawards</b><p>C2 Water</p></div>
-      <div class="tile"><b>Good Design Award</b><p>C2 Water</p></div>
-      <div class="tile"><b>Core77 Design Awards</b><p>C2 Water</p></div>
-      <div class="tile"><b>Dieline Awards</b><p>C2 Water</p></div>
-      <div class="tile"><b>MUSE Design Awards</b><p>C2 Water</p></div>
-      <div class="tile"><b>DEmark</b><p>C2 Water</p></div>
-      <div class="tile"><b>Gold Prize, SIIF</b><p>C2 Vitamin Jelly</p></div>
-      <div class="tile"><b>KIB Awards</b><p>C2 Vitamin Jelly</p></div>
+    <div class="tiles awtiles rv d1x">
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/reddotdesignaward.png" alt="Red Dot Design Award logo" loading="lazy"></span><div><b>Red Dot Design Award</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/ifdesignaward2021.png" alt="iF Design Award 2021 logo" loading="lazy"></span><div><b>iF Design Award 2021</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/pentawards.png" alt="Pentawards logo" loading="lazy"></span><div><b>Pentawards</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/gooddesignawardwinner.png" alt="Good Design Award logo" loading="lazy"></span><div><b>Good Design Award</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/core77designawards.png" alt="Core77 Design Awards logo" loading="lazy"></span><div><b>Core77 Design Awards</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/dielineawards2021.png" alt="Dieline Awards 2021 logo" loading="lazy"></span><div><b>Dieline Awards 2021</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/musedesignawards.png" alt="MUSE Design Awards logo" loading="lazy"></span><div><b>MUSE Design Awards</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/demark.png" alt="DEmark logo" loading="lazy"></span><div><b>DEmark</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/apdnara2021.png" alt="APD Nara 2021 logo" loading="lazy"></span><div><b>APD Nara 2021</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/markingawards.png" alt="Marking Awards logo" loading="lazy"></span><div><b>Marking Awards</b><p>C2 Water</p></div></div>
+      <div class="tile awt"><span class="logo-cell"><img src="assets/awards/wbd.png" alt="World Brand Design Society logo" loading="lazy"></span><div><b>World Brand Design Society</b><p>C2 Water</p></div></div>
+      <div class="tile" style="background:var(--ink);color:#fff"><b style="font-size:clamp(56px,5vw,80px);line-height:1">11</b><p style="color:var(--muted)"><span lang="en">International design awards for the C2 bottle.</span><span lang="th">รางวัลดีไซน์ระดับโลกของขวดซีทู</span></p></div>
     </div>
-    <p class="note"><span lang="en">Remark — C2 Water holds 11 international design awards. The award names shown are pending confirmation from C2 (name, year, logo).</span><span lang="th">หมายเหตุ — น้ำดื่มซีทูได้รับรางวัลดีไซน์ระดับโลก 11 รางวัล รายชื่อรางวัลที่แสดงอยู่ระหว่างรอยืนยันจากซีทู (ชื่อ ปี โลโก้)</span></p>
+    <p class="note"><span lang="en">Award names and logos as shown on c2waters.com. Award years and categories are pending confirmation from C2.</span><span lang="th">ชื่อและโลโก้รางวัลตามที่แสดงบน c2waters.com ปีและสาขาที่ได้รับรางวัลอยู่ระหว่างรอยืนยันจากซีทู</span></p>
     <div style="margin-top:48px"><button class="tlink" data-inquiry>Business Inquiry <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 8h13M9 3l5 5-5 5"/></svg></button></div>
   </section>
 </div>

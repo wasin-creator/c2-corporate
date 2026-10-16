@@ -110,6 +110,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .btm .eyebrow{margin-bottom:24px}
 .btm .h2{max-width:1100px;margin-bottom:16px}
 .btm p.lead{color:var(--muted);margin-bottom:36px}
+.scrub{position:relative;height:320vh}
+.scrub-in{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.scrub .btm{height:100%;min-height:0}
+.scrub-bar{position:absolute;left:var(--gut);right:var(--gut);bottom:32px;height:2px;background:rgba(255,255,255,.22);z-index:2}
+.scrub-bar i{display:block;height:100%;background:var(--aqua);transform:scaleX(0);transform-origin:0 50%}
+@media (max-width:768px){.scrub{height:260vh}.scrub-bar{bottom:20px}}
+@media (prefers-reduced-motion:reduce){.scrub{height:auto}.scrub-bar{display:none}}
 /* hero */
 .hero{background:var(--ink);color:#fff}
 .hero .btm{min-height:100vh;min-height:100svh}
@@ -454,14 +461,20 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </div>
   </section>
 
-  <section class="sec dark side stick keep">
-    <div class="txt">
+  <section class="scrub dark" id="vitScrub">
+    <div class="scrub-in">
+      <div class="bg heavy"><video muted playsinline preload="auto" data-scrub poster="assets/img/vitamin-poster.jpg" aria-label="C2 Vitamin Jelly">
+        <source src="assets/video/vitamin-scrub-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
+        <source src="assets/video/vitamin-scrub.mp4" type="video/mp4">
+      </video></div>
+      <div class="btm">
       <span class="eyebrow rv">Our Businesses <span class="dot">・</span> C2 Vitamin <span class="dot">・</span> Wellness</span>
-      <h2 class="h2 rv d1x" style="margin:24px 0 16px"><span lang="en">Wellness Made Enjoyable.</span><span lang="th">ดูแลตัวเองให้เป็นเรื่องง่าย</span></h2>
-      <p class="lead dim rv d2x" style="margin-bottom:36px"><span lang="en">C2 Vitamin Jelly: a jelly supplement with 13 natural extracts, in mayongchid flavour. Gold Prize, SIIF (South Korea); KIB Awards, Global Dietary Supplements Impact Awards. Presenter: Woo Do-hwan.</span><span lang="th">C2 Vitamin Jelly อาหารเสริมรูปแบบเจลลี่ กลิ่นมะยงชิด ผสมสารสกัดจากธรรมชาติ 13 ชนิด ได้รับรางวัล Gold Prize จาก SIIF (เกาหลีใต้) และ KIB Awards สาขา Global Dietary Supplements Impact Awards พรีเซนเตอร์: อู โด ฮวาน</span></p>
+      <h2 class="h2 rv d1x"><span lang="en">Wellness Made Enjoyable.</span><span lang="th">ดูแลตัวเองให้เป็นเรื่องง่าย</span></h2>
+      <p class="lead dim rv d2x"><span lang="en">C2 Vitamin Jelly: a jelly supplement with 13 natural extracts, in mayongchid flavour. Gold Prize, SIIF (South Korea); KIB Awards, Global Dietary Supplements Impact Awards. Presenter: Woo Do-hwan.</span><span lang="th">C2 Vitamin Jelly อาหารเสริมรูปแบบเจลลี่ กลิ่นมะยงชิด ผสมสารสกัดจากธรรมชาติ 13 ชนิด ได้รับรางวัล Gold Prize จาก SIIF (เกาหลีใต้) และ KIB Awards สาขา Global Dietary Supplements Impact Awards พรีเซนเตอร์: อู โด ฮวาน</span></p>
       <div class="rv d3x"><a class="tlink" href="https://www.facebook.com/C2VitaminTH/" target="_blank" rel="noopener">Explore C2 Vitamin <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a></div>
+      </div>
+      <div class="scrub-bar" aria-hidden="true"><i></i></div>
     </div>
-    <div class="pic rv"><img src="assets/img/jelly-boxes.jpg" alt="C2 Vitamin Jelly boxes" loading="lazy" style="object-position:50% 40%"></div>
   </section>
 
   <section class="sec dark full pad" style="display:flex;flex-direction:column;justify-content:flex-end">
@@ -915,12 +928,36 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     document.querySelectorAll('.menu a').forEach(function(a){a.classList.toggle('cur',a.getAttribute('href')==='#/'+(name==='home'?'':name))});
     openMenu(false);window.scrollTo(0,0);
     document.querySelectorAll('.page:not(.on) video').forEach(function(v){v.pause()});
-    document.querySelectorAll('.page.on video').forEach(function(v){var p=v.play();if(p&&p.catch)p.catch(function(){})});
+    document.querySelectorAll('.page.on video:not([data-scrub])').forEach(function(v){var p=v.play();if(p&&p.catch)p.catch(function(){})});
   }
   if('IntersectionObserver' in window){
     var vio=new IntersectionObserver(function(es){es.forEach(function(en){var v=en.target;if(!v.closest('.page.on'))return;if(en.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})},{threshold:.05});
-    document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
+    document.querySelectorAll('video:not([data-scrub])').forEach(function(v){vio.observe(v)});
   }
+
+  /* scroll-scrubbed video (C2 Vitamin) */
+  (function(){
+    var sec=document.getElementById('vitScrub');if(!sec)return;
+    var v=sec.querySelector('video'),bar=sec.querySelector('.scrub-bar i');
+    var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var dur=0,cur=0,target=0,raf=0;
+    function calc(){var r=sec.getBoundingClientRect(),span=r.height-window.innerHeight;return span>0?Math.min(1,Math.max(0,-r.top/span)):0}
+    function tick(){
+      raf=0;if(!dur)return;
+      if(v.seeking){raf=requestAnimationFrame(tick);return}
+      cur+=(target-cur)*.2;if(Math.abs(target-cur)<.0005)cur=target;
+      var t=Math.min(cur*dur,dur-.04);
+      if(Math.abs(v.currentTime-t)>.008)v.currentTime=t;
+      bar.style.transform='scaleX('+cur+')';
+      if(cur!==target)raf=requestAnimationFrame(tick);
+    }
+    function onScroll(){if(rm||!sec.getClientRects().length)return;target=calc();if(!raf)raf=requestAnimationFrame(tick)}
+    function ready(){dur=v.duration||0;v.pause();if(rm){v.currentTime=Math.max(0,dur-.04);return}onScroll()}
+    if(v.readyState>=1)ready();else v.addEventListener('loadedmetadata',ready);
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll);
+    window.addEventListener('hashchange',function(){cur=target=0;if(dur)v.currentTime=0});
+  })();
   window.addEventListener('hashchange',route);
   route();
 

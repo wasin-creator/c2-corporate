@@ -429,7 +429,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   </section>
 
   <section class="sec dark stick keep full">
-    <div class="bg"><img src="assets/img/bottle-pouring.jpg" alt="Water pouring from the C2 bottle into a glass" loading="lazy"></div>
+    <div class="bg"><video autoplay muted loop playsinline preload="metadata" poster="assets/img/c2-water-poster.jpg" aria-label="C2 Water x Jackson Wang">
+        <source src="assets/video/c2-water-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
+        <source src="assets/video/c2-water.mp4" type="video/mp4">
+      </video></div>
     <div class="btm">
       <span class="eyebrow rv">Our Businesses <span class="dot">・</span> C2 Water <span class="dot">・</span> Bottled Water</span>
       <h2 class="h2 rv d1x"><span lang="en">Refresh Everyday.</span><span lang="th">สดชื่นได้ทุกวัน</span></h2>
@@ -910,6 +913,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     openMenu(false);window.scrollTo(0,0);
     document.querySelectorAll('.page:not(.on) video').forEach(function(v){v.pause()});
     document.querySelectorAll('.page.on video').forEach(function(v){var p=v.play();if(p&&p.catch)p.catch(function(){})});
+  }
+  if('IntersectionObserver' in window){
+    var vio=new IntersectionObserver(function(es){es.forEach(function(en){var v=en.target;if(!v.closest('.page.on'))return;if(en.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})},{threshold:.05});
+    document.querySelectorAll('video').forEach(function(v){vio.observe(v)});
   }
   window.addEventListener('hashchange',route);
   route();

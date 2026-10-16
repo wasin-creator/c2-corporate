@@ -167,6 +167,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .row p{color:var(--muted-ink);font-size:17px}
 .dark .rows,.dark .row{border-color:#313131}
 .dark .row p{color:var(--muted)}
+/* awards slider */
+.awards{padding:140px 0 120px}
+.aw-wrap{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.aw-trk{display:flex;width:max-content;list-style:none;animation:mq 40s linear infinite}
+.aw-wrap:hover .aw-trk{animation-play-state:paused}
+.aw{flex:0 0 auto;width:280px;height:200px;display:flex;align-items:center;justify-content:center;padding:32px 36px;border-right:1px solid var(--line)}
+.aw img{max-width:100%;max-height:96px;width:auto;height:auto;filter:grayscale(1) contrast(1.05);opacity:.65;mix-blend-mode:multiply;transition:filter .5s ease-in-out,opacity .5s ease-in-out,transform .6s var(--ease)}
+.aw:hover img{filter:none;opacity:1;transform:scale(1.06)}
+@media (max-width:640px){.awards{padding:88px 0 72px}.aw{width:180px;height:130px;padding:20px}.aw img{max-height:52px}}
 /* marquee */
 .marq{overflow:hidden;padding:120px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .marq .trk{display:flex;width:max-content;animation:mq 46s linear infinite}
@@ -491,18 +500,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     </div>
   </section>
 
-  <section class="sec" style="padding:140px 0 120px">
+  <section class="sec awards" aria-labelledby="awT">
     <div class="colhd" style="padding:0 var(--gut)">
-      <span class="eyebrow rv">Inside C2</span>
-      <h2 class="h2 rv d1x"><span lang="en">Innovation, people, brands and impact.</span><span lang="th">นวัตกรรม ผู้คน แบรนด์ และผลกระทบ</span></h2>
+      <span class="eyebrow rv">Awards &amp; Recognition</span>
+      <h2 class="h2 rv d1x" id="awT"><span lang="en">11 international design awards for the C2 bottle.</span><span lang="th">ขวดซีทูได้รับรางวัลดีไซน์ระดับโลก 11 รางวัล</span></h2>
     </div>
-    <div class="drag" data-drag>
-      <a class="card" href="#/news"><div class="im"><img src="assets/img/bottle-plinth.jpg" alt="C2 620 ml bottle" style="object-position:30% 50%"></div><span class="eyebrow">Innovation</span><h3 class="h3"><span lang="en">Rethinking the everyday bottle</span><span lang="th">ออกแบบขวดน้ำประจำวันใหม่</span></h3></a>
-      <a class="card" href="#/news"><div class="im"><img src="assets/img/factory-washing.jpg" alt="18.9 L bottles in the washing line"></div><span class="eyebrow">People</span><h3 class="h3"><span lang="en">The team behind the line</span><span lang="th">ทีมงานเบื้องหลังทุกขวด</span></h3></a>
-      <a class="card" href="#/news"><div class="im"><img src="assets/img/jelly-boxes.jpg" alt="C2 Vitamin Jelly boxes"></div><span class="eyebrow">Brands</span><h3 class="h3"><span lang="en">C2 Vitamin enters wellness</span><span lang="th">C2 Vitamin ก้าวเข้าสู่ธุรกิจเวลเนส</span></h3></a>
-      <a class="card" href="#/news"><div class="im"><img src="assets/img/bottle-pouring.jpg" alt="C2 bottle with embossed mark" style="object-position:35% 50%"></div><span class="eyebrow">Awards &amp; Recognition</span><h3 class="h3"><span lang="en">Design recognition for packaging</span><span lang="th">รางวัลดีไซน์ด้านบรรจุภัณฑ์</span></h3></a>
+    <div class="aw-wrap">
+      <ul class="aw-trk"><li class="aw"><img src="assets/awards/reddotdesignaward.png" alt="Red Dot Design Award" loading="eager"></li><li class="aw"><img src="assets/awards/ifdesignaward2021.png" alt="iF Design Award 2021" loading="eager"></li><li class="aw"><img src="assets/awards/pentawards.png" alt="Pentawards" loading="eager"></li><li class="aw"><img src="assets/awards/gooddesignawardwinner.png" alt="Good Design Award Winner" loading="eager"></li><li class="aw"><img src="assets/awards/core77designawards.png" alt="Core77 Design Awards" loading="eager"></li><li class="aw"><img src="assets/awards/dielineawards2021.png" alt="Dieline Awards 2021, First Place" loading="eager"></li><li class="aw"><img src="assets/awards/musedesignawards.png" alt="MUSE Design Awards" loading="eager"></li><li class="aw"><img src="assets/awards/demark.png" alt="DEmark" loading="eager"></li><li class="aw"><img src="assets/awards/apdnara2021.png" alt="APD Nara 2021, Asia Package Design Conference" loading="eager"></li><li class="aw"><img src="assets/awards/markingawards.png" alt="Marking Awards" loading="eager"></li><li class="aw"><img src="assets/awards/wbd.png" alt="World Brand Design Society" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/reddotdesignaward.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/ifdesignaward2021.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/pentawards.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/gooddesignawardwinner.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/core77designawards.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/dielineawards2021.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/musedesignawards.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/demark.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/apdnara2021.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/markingawards.png" alt="" loading="eager"></li><li class="aw" aria-hidden="true"><img src="assets/awards/wbd.png" alt="" loading="eager"></li></ul>
     </div>
-    <div class="dragbar"><span class="eyebrow">Drag to browse</span><span class="prog"><i data-prog></i></span><span style="flex:1"></span><a class="tlink" href="#/news">News &amp; Stories <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 8h13M9 3l5 5-5 5"/></svg></a></div>
   </section>
 
   <div class="sec marq" aria-hidden="true">
